@@ -22,11 +22,36 @@ def read_data(file_name):
                     data[header].append(int(value))
     return data
 
+def selection_sort(number_array, direction = "ascending"):
+    """
+    :param list number_array: list with numeric array
+    :param str direction: string indicating sorting direction: ascending, descending
+    :return:
+    """
+    n = len(number_array)
+    for i in range(n):
+        min_max_i = i
+        for num_idx in range(i+1, n):
+            if direction == "ascending":
+                if number_array[num_idx] < number_array[min_max_i]:
+                    min_max_i = num_idx
+            elif direction == "descending":
+                if number_array[num_idx] > number_array[min_max_i]:
+                    min_max_i = num_idx
+        number_array[i], number_array[min_max_i] = number_array[min_max_i], number_array[i]
+    return  number_array
 
+
+
+    return
 
 def main():
     data = read_data("numbers.csv")
     print(data)
+
+    number_array = ([3, 6, 4, 1, 5, 8, 2])
+    number_array = selection_sort(number_array)
+    print(number_array)
     pass
 
 
